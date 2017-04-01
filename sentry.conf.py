@@ -266,7 +266,8 @@ else:
     SENTRY_OPTIONS['mail.backend'] = 'dummy'
 
 # The email address to send on behalf of
-SENTRY_OPTIONS['mail.from'] = env('SENTRY_SERVER_EMAIL') or 'root@localhost'
+SENTRY_OPTIONS['mail.from'] = env('SENTRY_SERVER_EMAIL') or 'sentry@datartisan.com'
+SENTRY_OPTIONS['mail.list-namespace'] = 'sentry.datartisan.com'
 
 # If you're using mailgun for inbound mail, set your API key and configure a
 # route to forward to /api/hooks/mailgun/inbound/
@@ -306,3 +307,6 @@ if 'GITHUB_APP_ID' in os.environ:
 if 'BITBUCKET_CONSUMER_KEY' in os.environ:
     BITBUCKET_CONSUMER_KEY = env('BITBUCKET_CONSUMER_KEY')
     BITBUCKET_CONSUMER_SECRET = env('BITBUCKET_CONSUMER_SECRET')
+
+# disable user register
+SENTRY_FEATURES['auth:register'] = False
